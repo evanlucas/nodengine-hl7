@@ -4,6 +4,7 @@ var fs = require('fs')
   , path = require('path')
   , split = require('split')
   , through = require('through')
+  , Message = require('../lib/message')
 
 describe('HL7 parser', function() {
   describe('Parse from file', function() {
@@ -34,6 +35,7 @@ describe('HL7 parser', function() {
       })
 
       parser.on('message', function(message) {
+        message.should.be.instanceOf(Message)
         messageCount++
       })
       parser.on('finish', function() {
@@ -56,6 +58,7 @@ describe('HL7 parser', function() {
       })
 
       parser.on('message', function(message) {
+        message.should.be.instanceOf(Message)
         got = message
       })
       parser.on('finish', function() {
