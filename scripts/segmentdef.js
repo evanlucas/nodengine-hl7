@@ -23,7 +23,7 @@ lines = lines.map(function(line, idx) {
   if (matches = line.match(/SetID ?\-.../)) {
     line = 'SetID'
   }
-  line = line.replace(/[\-\*\s\/\'\’\+\#]/g, '')
+  line = line.replace(/[\-\*\s\/\'\’\.\(\)\+\#]/g, '')
   return "  , '"+line+"'"
 })
 
