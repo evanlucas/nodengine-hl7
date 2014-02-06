@@ -84,8 +84,10 @@ function fixFile(file) {
     out = out.concat(fields)
   }
 
-  out.push('\n')
+  if (out[out.length-1] !== '')
+    out.push('\n')
 
-  log.info('done', name, out.join('\n'))
-
+  console.log(out.join('\n'))
+  //log.info('done', name, out.join('\n'))
+  //fs.writeFileSync(fp, out.join('\n'), 'utf8')
 }
