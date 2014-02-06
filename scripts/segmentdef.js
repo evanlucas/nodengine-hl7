@@ -3,8 +3,7 @@
 var fs = require('fs')
   , log = require('npmlog')
   , args = process.argv.splice(2)
-
-log.heading = 'segmentdef'
+  , path = require('path')
 
 if (args.length !== 1) {
   log.error('invalid args')
@@ -28,21 +27,11 @@ lines = lines.map(function(line, idx) {
   return "  , '"+line+"'"
 })
 
+var name = path.basename(args[0])
 var file = [
-    'var segment = exports'
+    "exports.name = '"+name+"'"
   , ''
-  , 'segment.parse = function(data, delims) {'
-  , '  data = String(data)'
-  , '  var out = {}'
-  , '  var comps = data.split(delims.field)'
-  , '  var len = comps.length'
-  , '  for (var i=0; i<len; i++) {'
-  , '    out[segment.fields[i]] = comps[i]'
-  , '  }'
-  , '  return out'
-  , '}'
-  , ''
-  , 'segment.fields = ['
+  , 'exports.fields = ['
   , "    'SegmentType'"
 ]
 
