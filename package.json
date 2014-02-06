@@ -1,0 +1,28 @@
+{
+  "name": "nodengine-hl7",
+  "version": "0.0.0",
+  "description": "HL7 parser",
+  "main": "index.js",
+  "dependencies": {
+    "split": "~0.3.0",
+    "npmlog": "0.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/evanlucas/nodengine-hl7"
+  },
+  "keywords": [
+    "hl7",
+    "parser"
+  ],
+  "author": "Evan Lucas <evan.lucas@hattiesburgclinic.com>",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/evanlucas/nodengine-hl7/issues"
+  },
+  "homepage": "https://github.com/evanlucas/nodengine-hl7"
+}
