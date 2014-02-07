@@ -17,6 +17,10 @@
     "should": "~3.1.2",
     "through": "~2.3.4"
   },
+  "bundleDependencies": [
+    "grunt-cafe-mocha",
+    "html-cov-bootstrap"
+  ],
   "scripts": {
     "test": "grunt"
   },
