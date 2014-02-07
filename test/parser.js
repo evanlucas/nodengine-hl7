@@ -5,6 +5,7 @@ var fs = require('fs')
   , split = require('split')
   , through = require('through')
   , Message = require('../').Message
+  , Segment = require('../').Segment
 
 describe('HL7 parser', function() {
   describe('Construct', function() {
@@ -47,6 +48,7 @@ describe('HL7 parser', function() {
 
       parser.on('message', function(message) {
         message.should.be.instanceOf(Message)
+        message.getHeader().should.be.instanceOf(Segment)
         messageCount++
       })
       parser.on('finish', function() {
