@@ -41,4 +41,21 @@ describe('Segment', function() {
       })
     })
   })
+
+  describe('toArray()', function() {
+    describe('MSH', function() {
+      it('should return an array of fields', function() {
+        var p = path.join(__dirname, 'fixtures', 'test.hl7')
+        var f = fs.readFileSync(p, 'utf8')
+        lines = f.split('\r')
+        var mshdata = lines[0]
+        var seg = new Segment(mshdata)
+        var out = seg.toArray()
+        var fields = seg.types[seg.segmentType()]
+        fields.forEach(function(field, idx) {
+          out[idx].should.eql(seg.parsed[field])
+        })
+      })
+    })
+  })
 })
