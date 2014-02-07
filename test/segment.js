@@ -15,6 +15,13 @@ describe('Segment', function() {
     })
   })
 
+  describe('Type', function() {
+    it('should support getting the segment type', function() {
+      var s = new Segment()
+      should.equal(null, s.segmentType())
+    })
+  })
+
   describe('Headers', function() {
     it('should support getting the header', function() {
       var d = 'MSH|^~\\&'
