@@ -19,6 +19,7 @@ describe('HL7 parser', function() {
       parser.should.be.instanceOf(Parser)
     })
   })
+
   describe('Parse from file', function() {
     it('should be able to parse', function(done) {
       var parser = new Parser()
@@ -28,6 +29,22 @@ describe('HL7 parser', function() {
         .pipe(parser)
       parser.on('finish', function() {
         done()
+      })
+    })
+
+    it('should emit an error on an invalid file', function(done) {
+      var parser = new Parser()
+      var test = path.join(__dirname, 'fixtures', 'invalid.hl7')
+      fs.createReadStream(test)
+        .pipe(split(/\r/))
+        .pipe(parser)
+
+      parser.on('error', function(err) {
+        done()
+      })
+
+      parser.on('finish', function() {
+        done(new Error('Should have emitted an error'))
       })
     })
   })
