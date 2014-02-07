@@ -1,12 +1,23 @@
 var fs = require('fs')
   , should = require('should')
-  , Parser = require('../')
+  , Parser = require('../').Parser
   , path = require('path')
   , split = require('split')
   , through = require('through')
-  , Message = require('../lib/message')
+  , Message = require('../').Message
 
 describe('HL7 parser', function() {
+  describe('Construct', function() {
+    it('should allow using new', function() {
+      var parser = new Parser()
+      parser.should.be.instanceOf(Parser)
+    })
+
+    it('should allow omitting new', function() {
+      var parser = Parser()
+      parser.should.be.instanceOf(Parser)
+    })
+  })
   describe('Parse from file', function() {
     it('should be able to parse', function(done) {
       var parser = new Parser()
