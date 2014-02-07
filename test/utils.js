@@ -5,7 +5,7 @@ var should = require('should')
 describe('Utilities', function() {
   describe('segmentIsHeader()', function() {
     it('should support passing a Segment', function() {
-      var d = 'MSH|^~\\&'
+      var d = 'MSH|^~\\&|||||||||||'
       var s = new Segment(d)
       utils.segmentIsHeader(s).should.be.true
       d = 'ORC|fadfasdf|'
