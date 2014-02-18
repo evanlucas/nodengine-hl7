@@ -1,6 +1,2 @@
 lib-cov
 coverage.html
-!node_modules
-node_modules/*
-!node_modules/grunt-cafe-mocha
-!node_modules/html-cov-bootstrap
