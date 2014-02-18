@@ -50,6 +50,55 @@ describe('Segment', function() {
         lines = f.split('\r')
         var mshdata = lines[0]
         var seg = new Segment(mshdata)
+        seg.parsed.should.have.property('SegmentType', 'MSH')
+        var out = seg.toArray()
+        var fields = seg.types[seg.segmentType()]
+        fields.forEach(function(field, idx) {
+          out[idx].should.eql(seg.parsed[field])
+        })
+      })
+    })
+
+    describe('PID', function() {
+      it('should return an array of fields', function() {
+        var p = path.join(__dirname, 'fixtures', 'test.hl7')
+        var f = fs.readFileSync(p, 'utf8')
+        lines = f.split('\r')
+        var mshdata = lines[1]
+        var seg = new Segment(mshdata)
+        seg.parsed.should.have.property('SegmentType', 'PID')
+        var out = seg.toArray()
+        var fields = seg.types[seg.segmentType()]
+        fields.forEach(function(field, idx) {
+          out[idx].should.eql(seg.parsed[field])
+        })
+      })
+    })
+
+    describe('NK1', function() {
+      it('should return an array of fields', function() {
+        var p = path.join(__dirname, 'fixtures', 'test.hl7')
+        var f = fs.readFileSync(p, 'utf8')
+        lines = f.split('\r')
+        var mshdata = lines[2]
+        var seg = new Segment(mshdata)
+        seg.parsed.should.have.property('SegmentType', 'NK1')
+        var out = seg.toArray()
+        var fields = seg.types[seg.segmentType()]
+        fields.forEach(function(field, idx) {
+          out[idx].should.eql(seg.parsed[field])
+        })
+      })
+    })
+
+    describe('PV1', function() {
+      it('should return an array of fields', function() {
+        var p = path.join(__dirname, 'fixtures', 'test.hl7')
+        var f = fs.readFileSync(p, 'utf8')
+        lines = f.split('\r')
+        var mshdata = lines[3]
+        var seg = new Segment(mshdata)
+        seg.parsed.should.have.property('SegmentType', 'PV1')
         var out = seg.toArray()
         var fields = seg.types[seg.segmentType()]
         fields.forEach(function(field, idx) {
