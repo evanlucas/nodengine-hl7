@@ -42,6 +42,35 @@ describe('Segment', function() {
     })
   })
 
+  describe('Variant', function() {
+    it('should support registering variants', function() {
+      var variant = require('./fixtures/pv1_variant')
+      Segment.registerVariant(variant)
+      var s = new Segment()
+      var types = s.types
+      types.should.have.property(variant.name)
+      types[variant.name][1].should.eql('SetIDFORPV1')
+    })
+
+    describe('Pass invalid variant', function() {
+      it('requires the variant to be an object', function() {
+        (function() {
+          var v = Segment.registerVariant()
+        }).should.throw('Variant must be an object')
+      })
+      it('requires the variant to have a name', function() {
+        (function() {
+          var v = Segment.registerVariant({})
+        }).should.throw('Variant must have a name')
+      })
+      it('requires the variant to have fields', function() {
+        (function() {
+          var v = Segment.registerVariant({name:'Test'})
+        }).should.throw('Variant must have fields')
+      })
+    })
+  })
+
   describe('toArray()', function() {
     describe('MSH', function() {
       it('should return an array of fields', function() {
