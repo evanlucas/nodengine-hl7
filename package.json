@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "HL7 parser",
   "main": "index.js",
+  "bin": {
+    "nehl7": "./bin/nodengine-hl7.js"
+  },
   "dependencies": {
     "split": "~0.3.0",
     "npmlog": "0.0.6",
@@ -17,10 +20,6 @@
     "should": "~3.1.2",
     "through": "~2.3.4"
   },
-  "bundleDependencies": [
-    "grunt-cafe-mocha",
-    "html-cov-bootstrap"
-  ],
   "scripts": {
     "test": "grunt"
   },
