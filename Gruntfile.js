@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         src: 'test/*.js',
         options: {
           ui: 'bdd',
-          reporter: 'html-cov-bootstrap',
+          reporter: 'html-cov',
           coverage: {
             output: 'coverage.html',
             env: 'NODENGINEHL7_COV'
