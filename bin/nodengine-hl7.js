@@ -55,6 +55,7 @@ function help() {
   console.log('   --file <file>', '           ', 'parse file')
   console.log('   --segments', '              ', 'only show segment types')
   console.log('   --count', '                 ', 'print message count')
+  console.log('   --json', '                  ', 'print output in json')
   console.log('   --help', '                  ', 'shows help and usage')
   console.log('   --version', '               ', 'shows the current version')
   process.exit(1)
