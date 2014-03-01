@@ -100,7 +100,7 @@ parser.on('message', function(message) {
 
 parser.on('finish', function() {
   if (parsed.json) {
-    console.log(JSON.stringify(out))
+    console.log(JSON.stringify(out, null, 2))
   } else if (parsed.count) {
     log.info('message count', mCount)
   }
