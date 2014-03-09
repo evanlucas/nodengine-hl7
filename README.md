@@ -16,6 +16,13 @@ To run tests:
 ```bash
 $ grunt
 ```
+
+To generate code coverage:
+
+```bash
+$ grunt cover
+```
+
 ## API
 
 ### Parser
@@ -121,3 +128,45 @@ $ grunt
 
 
 ***
+
+## Development
+
+### homebrew
+
+- To install, copy and paste the below into Terminal, hit enter, and follow the onscreen instructions
+
+```
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+```
+
+### node.js
+
+- Go to http://nodejs.org and click download
+- Then, follow the instructions
+
+### grunt-cli
+
+```bash
+$ npm install -g grunt-cli
+```
+
+### Xcode (including command line tools)
+
+- Download from the App Store
+- To install command line tools, open Terminal and run:
+
+```bash
+$ git
+```
+
+### jscoverage (for code coverage)
+
+- Clone the repo
+
+```bash
+$ git clone https://github.com/visionmedia/node-jscoverage
+$ cd node-jscoverage
+$ ./configure --prefix=/usr/local
+$ make
+$ make install
+```
