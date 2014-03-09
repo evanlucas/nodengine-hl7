@@ -121,3 +121,24 @@ $ grunt
 
 
 ***
+
+## Development
+
+### homebrew
+
+- To install, copy and paste the below into Terminal, hit enter, and follow the onscreen instructions
+
+```
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+```
+
+### node.js
+
+- Go to http://nodejs.org and click download
+- Then, follow the instructions
+
+### grunt-cli
+
+```bash
+npm install -g grunt-cli
+```
