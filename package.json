@@ -4,7 +4,7 @@
   "description": "HL7 parser",
   "main": "index.js",
   "bin": {
-    "nehl7": "./bin/nodengine-hl7.js"
+    "ne-hl7": "./bin/nodengine-hl7.js"
   },
   "dependencies": {
     "split": "~0.3.0",

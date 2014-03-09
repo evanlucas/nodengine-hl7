@@ -40,14 +40,14 @@ if (parsed.help) {
 }
 
 if (parsed.version) {
-  console.log('nehl7', 'v'+pkg.version)
+  console.log('ne-hl7', 'v'+pkg.version)
   process.exit()
 }
 
 function help() {
-  console.log('nehl7', 'v'+pkg.version)
+  console.log('ne-hl7', 'v'+pkg.version)
   console.log()
-  console.log(' usage: nehl7 [options]')
+  console.log(' usage: ne-hl7 [options]')
   console.log()
   console.log(' options:')
   console.log()
