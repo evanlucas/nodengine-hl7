@@ -142,3 +142,12 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```bash
 npm install -g grunt-cli
 ```
+
+### Xcode (including command line tools)
+
+- Download from the App Store
+- To install command line tools, open Terminal and run:
+
+```bash
+git
+```
