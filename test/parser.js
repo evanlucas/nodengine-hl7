@@ -76,7 +76,7 @@ describe('HL7 parser', function() {
       var messageCount = 0
 
       parser.on('error', function(e) {
-        throw e
+        done(e)
       })
 
       parser.on('message', function(message) {
