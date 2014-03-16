@@ -56,7 +56,7 @@ describe('HL7 parser', function() {
         .pipe(parser)
 
       parser.on('error', function(err) {
-        done()
+        done(err)
       })
 
       parser.on('finish', function() {
@@ -100,7 +100,7 @@ describe('HL7 parser', function() {
       var got = false
 
       parser.on('error', function(e) {
-        throw e
+        done(e)
       })
 
       parser.on('message', function(message) {
@@ -123,7 +123,7 @@ describe('HL7 parser', function() {
       var got = false
 
       parser.on('error', function(e) {
-        throw e
+        done(e)
       })
 
       parser.on('segment', function(segment) {
