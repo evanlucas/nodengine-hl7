@@ -12,6 +12,8 @@ To run tests:
 $ npm test
 ```
 
+**NOTE: All hl7 test fixtures are samples taken from various places on the internet**
+
 To generate code coverage:
 
 ```bash
