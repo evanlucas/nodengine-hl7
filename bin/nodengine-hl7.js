@@ -70,7 +70,7 @@ if (parsed.file) {
   stream = fs.createReadStream(parsed.file)
 } else {
   // expect stdin
-  var stream = process.stdin
+  stream = process.stdin
 }
 stream
   .pipe(split(/\r/))
