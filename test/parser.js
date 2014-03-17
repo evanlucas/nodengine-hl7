@@ -56,7 +56,7 @@ describe('HL7 parser', function() {
         .pipe(parser)
 
       parser.on('error', function(err) {
-        done(err)
+        done()
       })
 
       parser.on('finish', function() {
