@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "should": "~3.1.2",
-    "through": "~2.3.4"
+    "through": "~2.3.4",
+    "mocha": "^1.18.0"
   },
   "scripts": {
     "test": "mocha -R tap test/*.js -t 5000 -c -s 75",
