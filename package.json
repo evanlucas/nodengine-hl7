@@ -14,15 +14,12 @@
     "core-util-is": "^1.0.1"
   },
   "devDependencies": {
-    "grunt-cafe-mocha": "~0.1.10",
-    "grunt": "~0.4.2",
-    "grunt-modverify": "0.0.6",
-    "grunt-contrib-clean": "~0.5.0",
     "should": "~3.1.2",
     "through": "~2.3.4"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "mocha -R tap test/*.js -t 5000 -c -s 75",
+    "cover": "./scripts/cover.sh"
   },
   "repository": {
     "type": "git",

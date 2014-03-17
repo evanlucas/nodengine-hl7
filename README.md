@@ -5,22 +5,17 @@ $ npm install --save nodengine-hl7
 ```
 
 ## Unit Tests
-*Requires `grunt-cli`*
-
-```bash
-$ npm install -g grunt-cli
-```
 
 To run tests:
 
 ```bash
-$ grunt
+$ npm test
 ```
 
 To generate code coverage:
 
 ```bash
-$ grunt cover
+$ npm run cover
 ```
 
 ## API
@@ -143,12 +138,6 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
 - Go to http://nodejs.org and click download
 - Then, follow the instructions
-
-### grunt-cli
-
-```bash
-$ npm install -g grunt-cli
-```
 
 ### Xcode (including command line tools)
 

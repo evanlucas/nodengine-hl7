@@ -32,6 +32,22 @@ describe('HL7 parser', function() {
       })
     })
 
+    it('should be able to parse a file with multiple messages', function(done) {
+      var parser = new Parser()
+      var test = path.join(__dirname, 'fixtures', 'out.hl7')
+        , count = 0
+      fs.createReadStream(test)
+        .pipe(split(/\r/))
+        .pipe(parser)
+      parser.on('message', function(m) {
+        count++
+      })
+      parser.on('finish', function() {
+        count.should.equal(100)
+        done()
+      })
+    })
+
     it('should emit an error on an invalid file', function(done) {
       var parser = new Parser()
       var test = path.join(__dirname, 'fixtures', 'invalid.hl7')
@@ -40,7 +56,7 @@ describe('HL7 parser', function() {
         .pipe(parser)
 
       parser.on('error', function(err) {
-        done()
+        done(err)
       })
 
       parser.on('finish', function() {
@@ -60,7 +76,7 @@ describe('HL7 parser', function() {
       var messageCount = 0
 
       parser.on('error', function(e) {
-        throw e
+        done(e)
       })
 
       parser.on('message', function(message) {
@@ -84,7 +100,7 @@ describe('HL7 parser', function() {
       var got = false
 
       parser.on('error', function(e) {
-        throw e
+        done(e)
       })
 
       parser.on('message', function(message) {
@@ -107,7 +123,7 @@ describe('HL7 parser', function() {
       var got = false
 
       parser.on('error', function(e) {
-        throw e
+        done(e)
       })
 
       parser.on('segment', function(segment) {
