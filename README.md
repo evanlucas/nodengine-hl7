@@ -126,7 +126,7 @@ $ npm run cover
 
 ***
 
-## Development
+## Development (This is just what I use :])
 
 ### homebrew
 
