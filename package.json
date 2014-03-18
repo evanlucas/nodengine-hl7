@@ -1,6 +1,6 @@
 {
   "name": "nodengine-hl7",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HL7 parser",
   "main": "index.js",
   "bin": {
