@@ -1,4 +1,9 @@
 # nodengine-hl7
+
+[![Build Status](https://travis-ci.org/evanlucas/nodengine-hl7.png?branch=master)](https://travis-ci.org/evanlucas/nodengine-hl7)
+
+A hl7 parser
+
 ## Installation
 ```sh
 $ npm install --save nodengine-hl7
