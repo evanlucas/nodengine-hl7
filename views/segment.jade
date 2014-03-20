@@ -1,0 +1,118 @@
+h4#Segment Segment
+
+h5 Constructor
+
+h6 Example
+
+pre
+  code.js
+    | var hl7 = require('nodengine-hl7')
+    |   , Segment = hl7.Segment
+    | 
+    | var segment = new Segment()
+
++params
+  tr
+    td data
+    td String, Buffer
+    td The segment data
+  tr
+    td delimiters (optional)
+    td Object
+    td The <a href='#Message'>Message</a> delimiters
+
+p.help-block Note: the delimiters do not need to be passed if the message is a header segment
+
+h5 Segment.prototype.toArray()
+
+p.help-block returns an Array of the fields in the segment
+
+h5 Segment.prototype.isHeader()
+
+p.help-block returns true if the segment is a Message Header Segment (MSH, FSH, BHS)
+
+h5 Segment.prototype.segmentType()
+
+p.help-block returns the segment type
+
+h5 Segment.registerVariant()
+
++params
+  tr
+    td variant
+    td Object
+    td The variant segment
+
+p.help-block The variant segment must contain a <code>name</code> key which specifies the variant name and the <code>fields</code> key which is an Array of the field names to use
+
+h6 Example
+
+pre
+  code.js
+    | var hl7 = require('nodengine-hl7')
+    |   , Segment = hl7.Segment
+    | 
+    | var variant = {
+    |   name: 'ADD',
+    |   fields: [
+    |     'SegmentType',
+    |     'AddendumContinuationPointer',
+    |     'SendingApplication'
+    |   ]
+    | }
+    | 
+    | Segment.registerVariant(variant)
+
+
+h5 Segment.prototype.types
+
+p.help-block All registered Segment Types. Currently, the available segments are:
+ul
+  li ADD
+  li AL1
+  li BHS
+  li BLG
+  li BTS
+  li DB1
+  li DG1
+  li DRG
+  li DSC
+  li DSP
+  li EQL
+  li ERQ
+  li ERR
+  li EVN
+  li FHS
+  li FT1
+  li FTS
+  li GT1
+  li IN1
+  li IN2
+  li MRG
+  li MSA
+  li MSH
+  li NK1
+  li NPU
+  li NTE
+  li OBR
+  li OBX
+  li ODS
+  li ODT
+  li ORC
+  li PD1
+  li PID
+  li PR1
+  li PV1
+  li PV2
+  li QAK
+  li QRD
+  li RDF
+  li RDT
+  li ROL
+  li RQ1
+  li RQD
+  li SPR
+  li TXA
+  li URD
+  li URS
+  li VTQ

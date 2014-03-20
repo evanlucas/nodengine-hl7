@@ -1,0 +1,35 @@
+h3#Parser Parser
+
+p.help-block A Transform Stream
+
+pre
+  code.js
+    | var hl7 = require('nodengine-hl7')
+    |   , Parser = hl7.Parser
+
+h4 Events
+
+h5 <code>error</code>
+p.help-block emitted if an error occurs parsing a <a href="#Segment">Segment</a>
+
+h6 Example
+
+pre
+  code.js
+    | var fs = require('fs')
+    |   , parser = new Parser()
+    |   , fp = 'input.hl7'
+    | 
+    | var stream = fs.createReadStream(fp)
+    | stream.pipe(parser)
+    | 
+    | parser.on('error', function(err) {
+    |   console.log('Error parsing:', err)
+    | })
+
+h5 
+  <code>message</code>
+p.help-block emitted every time a <a href="#Message">Message</a> is encountered
+
+h5 <code>messages</code>
+p.help-block emitted at the end of the stream.  This will be an array of <a href="#Message">Message</a> objects.

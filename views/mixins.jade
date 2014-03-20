@@ -1,0 +1,17 @@
+mixin Segment
+  a(href='#Segment') Segment
+
+mixin Message
+  a(href='#Message') Message
+
+mixin params
+  h6 Params
+  table.table.table-bordered
+    thead
+      tr
+        th Name
+        th Type(s)
+        th Description
+    tbody
+      - if (block)
+        block

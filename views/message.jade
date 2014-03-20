@@ -1,0 +1,58 @@
+h4#Message Message
+
+h5 Constructor
+
+h6 Example
+
+pre
+  code.js
+    | var hl7 = require('nodengine-hl7')
+    |   , Message = hl7.Message
+    | 
+    | var message = new Message()
+
++params
+  tr
+    td segments
+    td Array, <a href="#Segment">Segment</a>
+    td A single <a href="#Segment">Segment</a> or and array of <a href="#Segment">Segments</a>
+
+h5 Message.prototype.hasSegments()
+
+p.help-block returns true if the <a href='#Message'>Message</a> has any <a href='#Segment'>Segments</a>
+
+h5 Message.prototype.addSegment()
+
+h6 Example
+pre
+  code.js
+    | var message = new Message()
+    |   , seg = new Segment(...)
+    | 
+    | message.addSegment(seg)
+
++params
+  tr
+    td segment
+    td <a href="#Segment">Segment</a>
+    td The <a href="#Segment">Segment</a> to add to the <a href='#Message'>Message</a>
+
+h5 Message.prototype.getHeader()
+
+p.help-block returns the header <a href='#Segment'>Segment</a> of the message
+
+h5 Message.prototype.delimiters()
+
+p.help-block returns the delimiters for this <a href='#Message'>Message</a>
+p.help-block Defaults to:
+
+pre
+  code.js
+    | {
+    |   segment: '\r',
+    |   field: '|',
+    |   component: '^',
+    |   subcomponent: '&',
+    |   repetition: '~',
+    |   escape: '\\'
+    | }

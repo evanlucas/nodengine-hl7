@@ -1,1 +1,40 @@
-My Page
+<html><head><title>nodengine-hl7 | docs</title><link rel="stylesheet" href="/public/css/bootstrap.min.css"/><link rel="stylesheet" href="/public/css/style.css"/></head><body><div class="container"><div class="col-lg-12"><div class="text-center"><h1>nodengine-hl7 <br/><small>a HL7 parser</small></h1></div><p class="text-center">Written by <a href="https://github.com/evanlucas">Evan Lucas</a></p><p class="text-center"><a href="https://github.com/evanlucas/nodengine-hl7">evanlucas/nodengine-hl7</a></p><br/><h2>Installation</h2><pre><code class="bash">$ npm install --save nodengine-hl7</code></pre><h2>Usage</h2><pre><code class="js">var hl7 = require('nodengine-hl7')</code></pre><h2>API</h2><h3 id="Parser">Parser</h3><p class="help-block">A Transform Stream</p><pre><code class="js">var hl7 = require('nodengine-hl7')
+  , Parser = hl7.Parser</code></pre><h4>Events</h4><h5><code>error</code></h5><p class="help-block">emitted if an error occurs parsing a <a href="#Segment">Segment</a></p><h6>Example</h6><pre><code class="js">var fs = require('fs')
+  , parser = new Parser()
+  , fp = 'input.hl7'
+ 
+var stream = fs.createReadStream(fp)
+stream.pipe(parser)
+ 
+parser.on('error', function(err) {
+  console.log('Error parsing:', err)
+})</code></pre><h5> 
+<code>message</code></h5><p class="help-block">emitted every time a <a href="#Message">Message</a> is encountered</p><h5><code>messages</code></h5><p class="help-block">emitted at the end of the stream.  This will be an array of <a href="#Message">Message</a> objects.</p><h4 id="Message">Message</h4><h5>Constructor</h5><h6>Example</h6><pre><code class="js">var hl7 = require('nodengine-hl7')
+  , Message = hl7.Message
+ 
+var message = new Message()</code></pre><h6>Params</h6><table class="table table-bordered"><thead><tr><th>Name</th><th>Type(s)</th><th>Description</th></tr></thead><tbody><tr><td>segments</td><td>Array, <a href="#Segment">Segment</a></td><td>A single <a href="#Segment">Segment</a> or and array of <a href="#Segment">Segments</a></td></tr></tbody></table><h5>Message.prototype.hasSegments()</h5><p class="help-block">returns true if the <a href='#Message'>Message</a> has any <a href='#Segment'>Segments</a></p><h5>Message.prototype.addSegment()</h5><h6>Example</h6><pre><code class="js">var message = new Message()
+  , seg = new Segment(...)
+ 
+message.addSegment(seg)</code></pre><h6>Params</h6><table class="table table-bordered"><thead><tr><th>Name</th><th>Type(s)</th><th>Description</th></tr></thead><tbody><tr><td>segment</td><td><a href="#Segment">Segment</a></td><td>The <a href="#Segment">Segment</a> to add to the <a href='#Message'>Message</a></td></tr></tbody></table><h5>Message.prototype.getHeader()</h5><p class="help-block">returns the header <a href='#Segment'>Segment</a> of the message</p><h5>Message.prototype.delimiters()</h5><p class="help-block">returns the delimiters for this <a href='#Message'>Message</a></p><p class="help-block">Defaults to:</p><pre><code class="js">{
+  segment: '\r',
+  field: '|',
+  component: '^',
+  subcomponent: '&',
+  repetition: '~',
+  escape: '\\'
+}</code></pre><h4 id="Segment">Segment</h4><h5>Constructor</h5><h6>Example</h6><pre><code class="js">var hl7 = require('nodengine-hl7')
+  , Segment = hl7.Segment
+ 
+var segment = new Segment()</code></pre><h6>Params</h6><table class="table table-bordered"><thead><tr><th>Name</th><th>Type(s)</th><th>Description</th></tr></thead><tbody><tr><td>data</td><td>String, Buffer</td><td>The segment data</td></tr><tr><td>delimiters (optional)</td><td>Object</td><td>The <a href='#Message'>Message</a> delimiters</td></tr></tbody></table><p class="help-block">Note: the delimiters do not need to be passed if the message is a header segment</p><h5>Segment.prototype.toArray()</h5><p class="help-block">returns an Array of the fields in the segment</p><h5>Segment.prototype.isHeader()</h5><p class="help-block">returns true if the segment is a Message Header Segment (MSH, FSH, BHS)</p><h5>Segment.prototype.segmentType()</h5><p class="help-block">returns the segment type</p><h5>Segment.registerVariant()</h5><h6>Params</h6><table class="table table-bordered"><thead><tr><th>Name</th><th>Type(s)</th><th>Description</th></tr></thead><tbody><tr><td>variant</td><td>Object</td><td>The variant segment</td></tr></tbody></table><p class="help-block">The variant segment must contain a <code>name</code> key which specifies the variant name and the <code>fields</code> key which is an Array of the field names to use</p><h6>Example</h6><pre><code class="js">var hl7 = require('nodengine-hl7')
+  , Segment = hl7.Segment
+ 
+var variant = {
+  name: 'ADD',
+  fields: [
+    'SegmentType',
+    'AddendumContinuationPointer',
+    'SendingApplication'
+  ]
+}
+ 
+Segment.registerVariant(variant)</code></pre><h5>Segment.prototype.types</h5><p class="help-block">All registered Segment Types. Currently, the available segments are:</p><ul><li>ADD</li><li>AL1</li><li>BHS</li><li>BLG</li><li>BTS</li><li>DB1</li><li>DG1</li><li>DRG</li><li>DSC</li><li>DSP</li><li>EQL</li><li>ERQ</li><li>ERR</li><li>EVN</li><li>FHS</li><li>FT1</li><li>FTS</li><li>GT1</li><li>IN1</li><li>IN2</li><li>MRG</li><li>MSA</li><li>MSH</li><li>NK1</li><li>NPU</li><li>NTE</li><li>OBR</li><li>OBX</li><li>ODS</li><li>ODT</li><li>ORC</li><li>PD1</li><li>PID</li><li>PR1</li><li>PV1</li><li>PV2</li><li>QAK</li><li>QRD</li><li>RDF</li><li>RDT</li><li>ROL</li><li>RQ1</li><li>RQD</li><li>SPR</li><li>TXA</li><li>URD</li><li>URS</li><li>VTQ</li></ul></div></div><script type="text/javascript" src="/public/js/highlight.pack.js"></script><script type="text/javascript">hljs.initHighlightingOnLoad()</script></body></html>

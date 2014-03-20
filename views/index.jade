@@ -1,0 +1,30 @@
+include mixins
+
+html
+  head
+    title nodengine-hl7 | docs
+    link(rel='stylesheet', href='/public/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/public/css/style.css')
+  body
+    .container
+      .col-lg-12
+        .text-center <h1>nodengine-hl7 <br/><small>a HL7 parser</small></h1>
+        p.text-center Written by <a href="https://github.com/evanlucas">Evan Lucas</a>
+        p.text-center
+          a(href='https://github.com/evanlucas/nodengine-hl7') evanlucas/nodengine-hl7
+        br
+        h2 Installation
+        pre
+          code.bash
+            | $ npm install --save nodengine-hl7
+        h2 Usage
+        pre
+          code.js
+            | var hl7 = require('nodengine-hl7')
+        h2 API
+        include parser
+        include message
+        include segment
+    script(type='text/javascript', src='/public/js/highlight.pack.js')
+    script(type='text/javascript').
+      hljs.initHighlightingOnLoad()
