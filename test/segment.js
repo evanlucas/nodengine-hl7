@@ -136,4 +136,17 @@ describe('Segment', function() {
       })
     })
   })
+
+  describe('toString()', function() {
+    it('should return a reconstructed raw message', function() {
+      var p = path.join(__dirname, 'fixtures', 'test.hl7')
+      var f = fs.readFileSync(p, 'utf8')
+      lines = f.split('\r')
+      var mshdata = lines[0]
+      var seg = new Segment(mshdata)
+      seg.parsed.should.have.property('SegmentType', 'MSH')
+      var out = seg.toString()
+      out.should.equal(mshdata)
+    })
+  })
 })
