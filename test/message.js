@@ -1,6 +1,10 @@
 var should = require('should')
   , Message = require('../').Message
   , Segment = require('../').Segment
+  , fs = require('fs')
+  , path = require('path')
+  , Parser = require('../').Parser
+  , split = require('split')
 
 describe('Message', function() {
   it('should support using new', function() {
@@ -53,6 +57,34 @@ describe('Message', function() {
       var s = new Segment(d)
       var m = new Message(s)
       m.hasSegments().should.eql(true)
+    })
+  })
+
+  describe('toString()', function() {
+    it('should have a toString function', function(done) {
+      var parser = new Parser()
+      var test = path.join(__dirname, 'fixtures', 'test2.hl7')
+      var contents = fs.readFileSync(test, 'utf8')
+      fs.createReadStream(test)
+        .pipe(split(/\r/))
+        .pipe(parser)
+
+      var got = false
+
+      parser.on('error', function(e) {
+        done(e)
+      })
+
+      parser.on('message', function(message) {
+        message.should.be.instanceOf(Message)
+        var o = message.toString() + '\n'
+        o.should.equal(contents)
+        got = message
+      })
+      parser.on('finish', function() {
+        should.exist(got)
+        done()
+      })
     })
   })
 })
