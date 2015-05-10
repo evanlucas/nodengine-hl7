@@ -65,21 +65,21 @@ var mCount = 0
 parser.on('message', function(message) {
   mCount++
   if (parsed.json) {
-    var m = []
-    message.segments.forEach(function(s) {
-      m.push(s.parsed)
+    var m = message.segments.map(function(s) {
+      return s.parsed
     })
     out.push(m)
   } else
   if (parsed.segments) {
     log.info('message', mCount)
-    message.segmentTypes.forEach(function(s) {
-      log.info('segment', s)
-    })
+    for (var i=0, len=message.segmentTypes.length; i<len; i++) {
+      log.info('segment', message.segmentTypes[i])
+    }
   } else {
-    message.segments.forEach(function(s) {
-      log.info(s.parsed.SegmentType, s.parsed)
-    })
+    var segs = message.segments
+    for (var i=0, len=segs.length; i<len; i++) {
+      log.info(segs[i].parsed.SegmentType, segs[i].parsed)
+    }
   }
 })
 
