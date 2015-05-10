@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "core-util-is": "^1.0.1",
+    "help": "~2.0.0",
     "nopt": "~2.1.2",
     "npmlog": "0.0.6",
     "split": "~0.3.0",

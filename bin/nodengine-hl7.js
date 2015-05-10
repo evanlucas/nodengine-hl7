@@ -5,6 +5,7 @@ var nopt = require('nopt')
   , path = require('path')
   , pkg = require('../package')
   , split = require('split')
+  , help = require('help')()
   , fs = require('fs')
   , Parser = require('../').Parser
   , Message = require('../').Message
@@ -42,23 +43,6 @@ if (parsed.help) {
 if (parsed.version) {
   console.log('ne-hl7', 'v'+pkg.version)
   process.exit()
-}
-
-function help() {
-  console.log('ne-hl7', 'v'+pkg.version)
-  console.log()
-  console.log(' usage: ne-hl7 [options]')
-  console.log()
-  console.log(' options:')
-  console.log()
-  console.log('   -l, --loglevel <level>', '      ', 'set the log level')
-  console.log('   -f, --file <file>', '           ', 'parse file')
-  console.log('   -s, --segments', '              ', 'only show segment types')
-  console.log('   -c, --count', '                 ', 'print message count')
-  console.log('   -j, --json', '                  ', 'print output in json')
-  console.log('   -h, --help', '                  ', 'shows help and usage')
-  console.log('   -v, --version', '               ', 'shows the current version')
-  process.exit(1)
 }
 
 var buf = ''
