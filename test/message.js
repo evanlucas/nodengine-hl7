@@ -31,6 +31,12 @@ describe('Message', function() {
       var d2 = 'OBR|||||||'
       var s2 = new Segment(d2)
       var m = new Message([s1, s2])
+      m.should.be.instanceOf(Message)
+      m.should.have.property('segments')
+      for (var i = 0, len = m.segments.length; i < len; i++) {
+        m.segments[i].should.be.instanceOf(Segment)
+      }
+      m.should.have.property('segmentTypes', ['MSH', 'OBR'])
     })
 
     it('should support taking a single Segment', function() {
