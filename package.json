@@ -32,7 +32,7 @@
     "hl7",
     "parser"
   ],
-  "author": "Evan Lucas <evan.lucas@hattiesburgclinic.com>",
+  "author": "Evan Lucas <evanlucas@me.com>",
   "license": "GPL",
   "bugs": {
     "url": "https://github.com/evanlucas/nodengine-hl7/issues"
