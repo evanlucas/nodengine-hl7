@@ -99,14 +99,6 @@ $ npm run cover
 
 ***
 
-### e
-
-  TODO Remove this and add a default segment parser
-  This is mainly in place so we can see what default
-  segments we are missing
-
-***
-
 ### utils.segmentIsHeader()
 
   Is the given _segment_ a header segment?
