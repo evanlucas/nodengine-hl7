@@ -154,15 +154,3 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```bash
 $ git
 ```
-
-### jscoverage (for code coverage)
-
-- Clone the repo
-
-```bash
-$ git clone https://github.com/visionmedia/node-jscoverage
-$ cd node-jscoverage
-$ ./configure --prefix=/usr/local
-$ make
-$ make install
-```
