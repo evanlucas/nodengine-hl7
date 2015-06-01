@@ -22,7 +22,7 @@
   },
   "scripts": {
     "test": "mocha -R tap test/*.js -t 5000 -c -s 75",
-    "cover": "./scripts/cover.sh && ./scripts/results.js"
+    "cover": "istanbul cover _mocha -- -R tap test/*.js -t 5000 -c -s 75"
   },
   "repository": {
     "type": "git",
