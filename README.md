@@ -10,7 +10,8 @@ $ npm install --save nodengine-hl7
 ```
 
 ## Basic Example (Coffescript) 
-transform to JS: http://js2.coffee/
+Transform the following code to JS: http://js2.coffee/
+Test messages can be sent with http://www.hl7soup.com/
 
 ```
 net = require('net')
