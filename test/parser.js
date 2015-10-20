@@ -1,7 +1,6 @@
 'use strict'
 
 var fs = require('fs')
-  , should = require('should')
   , Parser = require('../').Parser
   , path = require('path')
   , split = require('split')
