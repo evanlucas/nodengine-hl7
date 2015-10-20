@@ -10,6 +10,45 @@ A hl7 parser
 $ npm install --save nodengine-hl7
 ```
 
+## Basic Example (Coffescript) 
+Transform the following code to JS: http://js2.coffee/
+Test messages can be sent with http://www.hl7soup.com/
+
+```
+net = require('net')
+hl7 = require('nodengine-hl7')
+Parser = hl7.Parser
+parser = new Parser()
+
+parser.on('error', (err) ->
+  console.log('Error parsing:', err)
+)
+
+parser.on('messages', (messages) ->
+  console.log('Messages:', messages)
+)
+
+parser.on('message', (message) ->
+  console.log('Message:', message.header.parsed)
+)
+
+server = net.createServer((stream) ->
+  stream.setEncoding 'utf8'
+  stream.addListener 'connect', ->
+    console.log 'Client connected'
+    return
+
+  stream.pipe(parser)
+
+  stream.addListener 'end', ->
+    console.log 'Client disconnected'
+    stream.end()
+    return
+  return
+)
+server.listen 59895 #or any other port
+```
+
 ## Unit Tests
 
 To run tests:
