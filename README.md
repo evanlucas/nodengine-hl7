@@ -120,29 +120,6 @@ $ npm run cover
 | ---- | ------- | ----------- |
 | type | String | The segment type |
 
+## License
 
-***
-
-## Development (This is just what I use :])
-
-### homebrew
-
-- To install, copy and paste the below into Terminal, hit enter, and follow the onscreen instructions
-
-```
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-```
-
-### node.js
-
-- Go to http://nodejs.org and click download
-- Then, follow the instructions
-
-### Xcode (including command line tools)
-
-- Download from the App Store
-- To install command line tools, open Terminal and run:
-
-```bash
-$ git
-```
+MIT (See `LICENSE` for more info)
