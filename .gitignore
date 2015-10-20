@@ -1,3 +1,4 @@
 lib-cov
 coverage.html
 coverage/
+.nyc_output
