@@ -1,6 +1,7 @@
 # nodengine-hl7
 
 [![Build Status](https://travis-ci.org/evanlucas/nodengine-hl7.png?branch=master)](https://travis-ci.org/evanlucas/nodengine-hl7)
+[![Coverage Status](https://coveralls.io/repos/evanlucas/nodengine-hl7/badge.svg?branch=master&service=github)](https://coveralls.io/github/evanlucas/nodengine-hl7?branch=master)
 
 A hl7 parser
 
