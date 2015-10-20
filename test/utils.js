@@ -1,19 +1,16 @@
-var should = require('should')
+'use strict'
+
+var test = require('tap').test
   , utils = require('../').utils
   , Segment = require('../').Segment
 
-describe('Utilities', function() {
-  describe('segmentIsHeader()', function() {
-    it('should support passing a Segment', function() {
-      var d = 'MSH|^~\\&|||||||||||'
-      var s = new Segment(d)
-      utils.segmentIsHeader(s).should.be.true
-      d = 'ORC|fadfasdf|'
-      s = new Segment(d)
-      utils.segmentIsHeader(s).should.be.false
-    })
-    it('should support null', function() {
-      utils.segmentIsHeader('12345').should.be.false
-    })
-  })
+test('segmentIsHeader', function(t) {
+  t.plan(3)
+  var d = 'MSH|^~\\&|||||||||||'
+  var s = new Segment(d)
+  t.equal(true, utils.segmentIsHeader(s), 'segment is header')
+  d = 'ORC|fadfasdf|'
+  s = new Segment(d)
+  t.equal(false, utils.segmentIsHeader(s), 'segment is not header')
+  t.equal(false, utils.segmentIsHeader('12345'), 'segment is not header')
 })
