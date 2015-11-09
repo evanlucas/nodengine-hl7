@@ -10,6 +10,26 @@ A hl7 parser
 $ npm install --save nodengine-hl7
 ```
 
+or install globally for the CLI tool
+
+```bash
+$ npm install -g nodengine-hl7
+$ ne-hl7 --help
+ne-hl7 - a streaming parser for hl7 messages
+
+    usage: ne-hl7 [options]
+
+    options:
+
+      -h, --help                  show help and usage
+      -l, --loglevel <level>      set log level
+      -f, --file <file>           parse file
+      -s, --segments              only show segment types
+      -c, --count                 print message count
+      -j, --json                  output in json
+      -v, --version               show version
+```
+
 ## Unit Tests
 
 To run tests:
