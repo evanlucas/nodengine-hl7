@@ -17,8 +17,10 @@ test('message constructor', function(t) {
 })
 
 test('message header', function(t) {
-  t.plan(1)
+  t.plan(2)
   var m = new Message()
+  t.equal(m.getHeader(), null)
+  var m = new Message([])
   t.equal(m.getHeader(), null)
 })
 
