@@ -13,7 +13,7 @@
     "split": "~0.3.0"
   },
   "devDependencies": {
-    "tap": "~2.3.1",
+    "tap": "~5.0.0",
     "through": "~2.3.4"
   },
   "scripts": {
