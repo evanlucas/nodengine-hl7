@@ -34,7 +34,7 @@ log.heading = 'nodengine-hl7'
 
 if (parsed.loglevel) log.level = parsed.loglevel
 
-if (parsed.json) parsed.loglevel = 'quiet'
+if (parsed.json) parsed.loglevel = 'silent'
 
 if (parsed.help) {
   return help()
