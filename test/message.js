@@ -54,6 +54,19 @@ test('segments', function(t) {
   t.equal(m.hasSegments(), true)
 })
 
+test('delimiters', function(t) {
+  t.plan(1)
+  var m = new Message()
+  t.deepEqual(m.delimiters(), {
+    segment: '\r'
+  , field: '|'
+  , component: '^'
+  , subcomponent: '&'
+  , repetition: '~'
+  , escape: '\\'
+  }, 'default delimiters are correct')
+})
+
 test('toString()', function(t) {
   t.plan(3)
   var parser = new Parser()
