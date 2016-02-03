@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict'
+
 var nopt = require('nopt')
   , log = require('npmlog')
   , path = require('path')
@@ -8,8 +10,6 @@ var nopt = require('nopt')
   , help = require('help')()
   , fs = require('fs')
   , Parser = require('../').Parser
-  , Message = require('../').Message
-  , Segment = require('../').Segment
   , knownOpts = { loglevel: ['verbose', 'info', 'error', 'warn', 'silent']
                 , file: path
                 , help: Boolean
@@ -45,8 +45,7 @@ if (parsed.version) {
   process.exit()
 }
 
-var buf = ''
-  , parser = new Parser()
+var parser = new Parser()
   , stream
 process.stdin.setEncoding('utf8')
 

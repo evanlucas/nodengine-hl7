@@ -4,7 +4,6 @@ var fs = require('fs')
   , Parser = require('../').Parser
   , path = require('path')
   , split = require('split')
-  , through = require('through')
   , Message = require('../').Message
   , Segment = require('../').Segment
   , test = require('tap').test
@@ -34,7 +33,6 @@ test('parse file with multiple messages', function(t) {
   t.plan(101)
   var parser = new Parser()
   var test = path.join(__dirname, 'fixtures', 'out.hl7')
-    , count = 0
   fs.createReadStream(test)
     .pipe(split(/\r/))
     .pipe(parser)

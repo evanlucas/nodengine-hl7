@@ -2,7 +2,6 @@
 
 var test = require('tap').test
   , Parser = require('../').Parser
-  , split = require('split')
   , path = require('path')
   , fs = require('fs')
 
