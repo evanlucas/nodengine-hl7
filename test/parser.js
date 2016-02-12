@@ -79,3 +79,26 @@ test('multiple messages', function(t) {
     t.ok('got finish event')
   })
 })
+
+test('parse PointClickCare ADT message using ZEV variant', function(t) {
+  t.plan(3)
+
+  var variant = require('./fixtures/zev_variant')
+  Segment.registerVariant(variant)
+
+  var parser = new Parser()
+  var test = path.join(__dirname, 'fixtures', 'pcc_adt_A03.hl7')
+  fs.createReadStream(test)
+    .pipe(split(/\r/))
+    .pipe(parser)
+  parser.on('error', t.fail)
+
+  parser.on('message', function(msg) {
+    t.type(msg, Message)
+    t.deepEqual(msg.segmentTypes, ['MSH', 'EVN', 'PID', 'PV1', 'ZEV'])
+  })
+
+  parser.on('finish', function() {
+    t.ok('got finish event')
+  })
+})
